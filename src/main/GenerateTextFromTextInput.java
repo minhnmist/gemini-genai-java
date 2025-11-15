@@ -10,8 +10,9 @@ public class GenerateTextFromTextInput {
         Client client = Client.builder().apiKey("AIzaSyAHsCuodQdMyMBPJQejYwXQc9ue9d5rYoM")
             .httpOptions(HttpOptions.builder().apiVersion("v1alpha")).build();
         
-            GenerateContentResponse response = client.models.generatContent("gemini-2.5-flash-lite", "Tell me today's date", null);
+        GenerateContentResponse response = client.models.generatContent(
+            "gemini-2.5-flash-lite", "Tell me today's date", null);
 
-            System.out.println(response.text());
+        System.out.println(response.text());
     }
 }
