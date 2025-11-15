@@ -162,6 +162,11 @@
       <artifactId>kotlin-stdlib-jdk8</artifactId>
       <version>1.9.10</version>
     </dependency>
+    <dependency>
+      <groupId>com.google.genai</groupId>
+      <artifactId>google-genai</artifactId>
+      <version>1.27.0</version>
+    </dependency>
   </dependencies>
 
   <build>
