@@ -170,6 +170,13 @@
   </dependencies>
 
   <build>
+    <build>
+      <resources>
+        <resource>
+          <src.dir>src/main</src.dir>
+        </resource>
+      </resources>
+    </build>
     <extensions>
       <extension>
         <groupId>kr.motd.maven</groupId>
