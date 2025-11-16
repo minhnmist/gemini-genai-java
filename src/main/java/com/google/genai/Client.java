@@ -132,9 +132,9 @@ public final class Client implements AutoCloseable {
 
     /** Sets the {@link HttpOptions} for the API client. */
     @CanIgnoreReturnValue
-    public Builder httpOptions(Builder httpOptions) {
+    public Builder httpOptions(HttpOptions httpOptions) {
       checkNotNull(httpOptions, "httpOptions cannot be null");
-      this.httpOptions = Optional.of(builder);
+      this.httpOptions = Optional.of(httpOptions);
       return this;
     }
 
