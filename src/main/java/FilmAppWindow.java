@@ -10,7 +10,7 @@ public class FilmAppWindow extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
 
-        add(new FilmAppPanel(this));
+        add(new SearchPanel(this));
 
         setVisible(true);
     }
