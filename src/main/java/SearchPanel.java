@@ -66,7 +66,7 @@ public class SearchPanel extends JPanel {
 
         submitButton.setText("SUBMIT");
         submitButton.setBackground(Color.WHITE);
-        submitButton.setBounds(left, w.getHeight() / 2, width, height - 20);
+        submitButton.setBounds(left, 450, width, height - 20);
         submitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 response.setText(aiOutput.getResponse(textArea.getText()));
