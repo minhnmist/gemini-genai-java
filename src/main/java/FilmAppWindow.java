@@ -2,7 +2,7 @@ import javax.swing.JFrame;
 
 public class FilmAppWindow extends JFrame {
     public FilmAppWindow() {
-        setSize(400, 900);
+        setSize(360, 900);
         setTitle("FILM RECOMMENDATIONS");
         setLocationRelativeTo(null);
         setResizable(false);
