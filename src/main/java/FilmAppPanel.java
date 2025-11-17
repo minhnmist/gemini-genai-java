@@ -4,11 +4,16 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import java.awt.Color;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class FilmAppPanel extends JPanel {
     private FilmAppWindow w;
+    private JLabel searchText;
+    private JButton homeButton, searchButton, dashboardButton, libraryButton, settingsButton;
     private JButton submitButton;
     private JTextArea textArea, response;
     private JScrollPane scrollPane, responsePane;
@@ -16,6 +21,12 @@ public class FilmAppPanel extends JPanel {
 
     public FilmAppPanel(FilmAppWindow win) {
         w = win;
+        searchText = new JLabel();
+        homeButton = new JButton();
+        searchButton = new JButton();
+        dashboardButton = new JButton();
+        libraryButton = new JButton();
+        settingsButton = new JButton();
         submitButton = new JButton();
         textArea = new JTextArea();
         response = new JTextArea();
@@ -31,44 +42,98 @@ public class FilmAppPanel extends JPanel {
     }
 
     private void loadComponents() {
-        response.setLineWrap(true);
+        int width = 250, height = 50, left = w.getWidth() / 2 - (width / 2), length = 65;
+
+        searchText.setText("SEARCH");
+        searchText.setBounds(left, w.getHeight() / 22, width, height);
 
         textArea.setForeground(Color.BLACK);
         textArea.setBackground(Color.WHITE);
         textArea.setLineWrap(true);
-        
-        scrollPane.setBounds(w.getWidth() / 9, w.getHeight() / 8, 300, 100);
+        textArea.setWrapStyleWord(true);
+        scrollPane.setBounds(w.getWidth() / 2 - (width / 2), w.getHeight() / 10, width, height);
+
+        response.setEditable(false);
+        response.setBackground(new Color(245, 245, 245));
+        response.setLineWrap(true);
+        response.setWrapStyleWord(true);
+        response.setText("WHAT ARE YOU LOOKING FOR?"
+            + aiOutput.getSuggestions());
+
+        responsePane.setBounds(left, w.getHeight() / 10 + 55, width, height * 5);
 
         submitButton.setText("SUBMIT");
         submitButton.setBackground(Color.WHITE);
-        submitButton.setBounds(w.getWidth() / 9, w.getHeight() / 3 * 2, 300, 30);
+        submitButton.setBounds(left, w.getHeight() / 2, width, height - 20);
         submitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 System.out.println(textArea.getText());
                 response.setText(aiOutput.getResponse(textArea.getText()));
-                // array = aiOutput.getResponse(textArea.getText()).split(" ");
-
-                // int lineLength = 30;
-                // String responseStr = "";
-                
-                // for (int x = 0; x < array.length; x++) {
-                //     lineLength -= array[x].length();
-                //     System.out.println(lineLength);
-                //     if (lineLength < 0) {
-                //         responseStr += "\n";
-                //         lineLength = 50;
-                //     }
-                //     responseStr += array[x];
-                //     responseStr += " ";
-                // }
-                // System.out.println(responseStr);
-                // response.setText(responseStr);
+                textArea.setText("");
             }
         });
 
-        responsePane.setBackground(new Color(245, 245, 245));
-        responsePane.setBounds(w.getWidth() / 9, w.getHeight() / 4, 300, 300);
+        homeButton.setText("HOME");
+        homeButton.setMargin(new Insets(2, 2, 2, 2));
+        homeButton.setBackground(Color.WHITE);
+        homeButton.setBounds(left - 40, w.getHeight() - 340, length, length);
+        homeButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("GO TO HOME");
+            }
+        });
+
+        searchButton.setText("SEARCH");
+        searchButton.setMargin(new Insets(2, 2, 2, 2));
+        searchButton.setBackground(Color.WHITE);
+        searchButton.setBounds(left - 40 + length, w.getHeight() - 340, length, length);
+        searchButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("GO TO SEARCH");
+            }
+        });
+
+        dashboardButton.setText("DASHBOARD");
+        dashboardButton.setMargin(new Insets(2, 2, 2, 2));
+        dashboardButton.setBackground(Color.WHITE);
+        dashboardButton.setBounds(left - 40 + length * 2, w.getHeight() - 340, length, length);
+        dashboardButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("GO TO DASHBOARD");
+            }
+        });
+
+        libraryButton.setText("LIBRARY");
+        libraryButton.setMargin(new Insets(2, 2, 2, 2));
+        libraryButton.setBackground(Color.WHITE);
+        libraryButton.setBounds(left - 40 + length * 3, w.getHeight() - 340, length, length);
+        libraryButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("GO TO LIBRARY");
+            }
+        });
+
+        settingsButton.setText("SETTINGS");
+        settingsButton.setMargin(new Insets(2, 2, 2, 2));
+        settingsButton.setBackground(Color.WHITE);
+        settingsButton.setBounds(left - 40 + length * 4, w.getHeight() - 340, length, length);
+        settingsButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("GO TO SETTINGS");
+            }
+        });
         
+        add(searchText);
+        add(homeButton);
+        add(searchButton);
+        add(dashboardButton);
+        add(libraryButton);
+        add(settingsButton);
         add(scrollPane);
         add(submitButton);
         add(responsePane);
