@@ -10,7 +10,7 @@ public class GenerateTextFromTextInput {
         // Developer backend.
 
         client = Client.builder()
-            .apiKey("AIzaSyAHsCuodQdMyMBPJQejYwXQc9ue9d5rYoM").build();
+            .apiKey("").build();
     }
 
     public String getResponse(String i) {
